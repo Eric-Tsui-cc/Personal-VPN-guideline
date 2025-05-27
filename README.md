@@ -11,7 +11,7 @@ Run your server, test the ping of your server (use the command for any bash, for
 ```
 ping xx.xx.xxx.xx
 ```
-IF ping is too high, you can change the server or location to meet your needs.
+If ping is too high, you can change the server or location to meet your needs.
 # Connect to Server
 For macOS or Linux, open the terminal and use the command, xx.xx.xxx.xx is your server ip address.
 ```
