@@ -5,8 +5,8 @@
 For Amazon EC2, you can just use the free tiers, so it's almost free to use for a while, and we recommend t2.micro or t2.nano for your VPN server.
 
 # Build Server
-Ensure you have installed Ubuntu on your server(also available for CentOS 6,7, Debian ), and set the security group open for ports 22/80/443. For better testing, add the rule ICMP IPV4 is necessary. Security group like the pic below.//Pic
-Run your server, test the ping of your server // use command for any bash, for example, cmd for Windows
+Ensure you have installed Ubuntu on your server(also available for CentOS 6,7, Debian ), and set the security group open for ports 22/80/443. For better testing, add the rule ICMP IPV4 is necessary. 
+Run your server, test the ping of your server (use the command for any bash, for example, cmd or powershell for Windows)
 ```
 ping xx.xx.xxx.xx
 ```
@@ -45,8 +45,10 @@ Run the script
 ### 2. Set the port for your VPN, and make sure you open it in the security group from your SaaS provider.
 ### 3. Select the stream cipher you want to use (You can just choose the default:)
 ### 4. Press any key to start building.
+ After the process of building, it will show some information about your VPN, just like this. Take a screenshot or make a note.
+ ![Pic](https://github.com/Eric-Tsui-cc/Personal-VPN-guideline/blob/main/image/Image%2027-05-2025%20at%2013.55.jpeg)
+
 # Connect to your VPN
- After the process of building, it will show some information about your VPN, just like this //pic , take a screenshot or make a note.
  Now we need software for connecting to your VPN server.
 ### For macOS and iOS, I recommend [Shadowrocket](https://apps.apple.com/us/app/shadowrocket/id932747118) (better user experience) and [OneClick](https://apps.apple.com/us/app/oneclick-safe-easy-fast/id1545555197)(Free). 
 ## Simple tutorial for connecting by using Shadowrocket.
