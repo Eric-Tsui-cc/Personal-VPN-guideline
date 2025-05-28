@@ -21,7 +21,11 @@ Run your server, test the ping of your server (use the command for any bash, for
 ping xx.xx.xxx.xx
 ```
 If ping is too high, you can change the server or location to meet your needs.
-
+## Get a Domain
+* Go back to aws console, search **router53**
+* At the box of the register domain, type in your ideal domain name.
+* Click "check"
+* Pick an acceptable price domain for your server, and pay for that.
 ## Connect to Server
 For macOS or Linux, open the terminal and use the command, xx.xx.xxx.xx is your server ip address.
 ```
@@ -33,6 +37,16 @@ ssh -i "webkey" ubuntu@xx.xx.xxx.xx
 ```
 ### webkey is the local key file of your server.
 For Windows, download a software called [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) , for tutorial of using putty to connect your ec2 server, see [Video by Herbertech](https://www.youtube.com/live/TkSuLg-8TD8)
+## Build basic web server
+* After connection, update and install Apache2: Run
+```
+sudo apt update
+```
+Update apt repositories
+```
+sudo apt install apache2
+```
+Install Apache web service
 ## Build the VPN proxy service
 After connecting your server, run the commands below
 ```
