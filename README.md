@@ -44,7 +44,7 @@ Run the script
 # Modify your VPN 
 ### 1. Set the password for your server, and keep it.
 ### 2. Set the port for your VPN,
-# make sure you open it in the security group from your SaaS provider.
+# make sure you open it in the security group from your IaaS provider.
 ### 3. Select the stream cipher you want to use (You can just choose the default:)
 ### 4. Press any key to start building.
  After the process of building, it will show some information about your VPN, just like this. Take a screenshot or make a note.
