@@ -13,7 +13,7 @@ This document and project are based on Amazon EC2 Ubuntu server.
 * Review and Launch
 * Click "Launch".
 [Tutorial for build EC2 if you don't know](https://www.youtube.com/watch?v=86Tuwtn3zp0)
-# For Web server
+# Part 1:Build the Web server
 ## Modify your instance
 For better testing, adding the rule ICMP IPV4 to your security group is necessary. 
 Run your server, test the ping of your server (use the command for any bash, for example, cmd or powershell for Windows)
@@ -21,11 +21,6 @@ Run your server, test the ping of your server (use the command for any bash, for
 ping xx.xx.xxx.xx
 ```
 If ping is too high, you can change the server or location to meet your needs.
-## Get a Domain
-* Go back to aws console, search **router53**
-* At the box of the register domain, type in your ideal domain name.
-* Click "check"
-* Pick an acceptable price domain for your server, and pay for that.
 ## Connect to Server
 For macOS or Linux, open the terminal and use the command, xx.xx.xxx.xx is your server ip address.
 ```
@@ -47,6 +42,44 @@ Update apt repositories
 sudo apt install apache2
 ```
 Install Apache web service
+After finish, you have basic web page now, the web page file is located 
+``
+var/www/html/index.html
+``
+Modify the content by using the nano command.
+## Get SSL/TLS for your website.
+Run
+```
+sudo snap install --classic certbot
+```
+Install Certbot
+```
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+Ensure that the certbot command can be run.
+```
+sudo certbot --apache
+```
+Install your certificates
+After this, visit your website to see the lock icon for the test.
+## Get a Domain
+* Go back to the AWS console, search **router53**
+* At the box of the register domain, type in your ideal domain name.
+* Click "check"
+* Pick an acceptable price domain for your server, and pay for that.
+## Get Elastic IP address and associate it with your instance
+* Go back to the AWS console, search **Elastic IP address**
+* Click Allocate **elastic IP address**
+* After Allocated, tick your IPv4 address and Click **Action -> Associate Elastic IP address**
+* Then choose your instance
+* Now you have the fixed IP address for your instance. :)
+## Associate your Domain with your IP address(DNS)
+* Go back to router 53
+* Go **Hosted zones -> your domain -> Creat record**
+* Type in your IP address in **"Value"**
+* Other keep the default, then Create records.
+* After finish, try to visit the domain to test, may it take 10 mins.
+# Part 2: Build VPN service.
 ## Build the VPN proxy service
 After connecting your server, run the commands below
 ```
