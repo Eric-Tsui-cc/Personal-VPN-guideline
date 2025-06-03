@@ -182,6 +182,7 @@ ss -tunap | grep ESTAB | grep ":$PORT" | awk -F'[ :]' '!seen[$9]++' | sort -k 5 
     echo "No active connections found for port $PORT."
 }
 echo "#################################################################################################################################"
-···
-
+```
+### Output example
+![Pic](https://github.com/Eric-Tsui-cc/VPN-Proxy-Project/blob/main/image/Screenshot%202025-06-03%20133019.png)
 
