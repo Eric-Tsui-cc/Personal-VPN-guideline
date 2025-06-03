@@ -1,6 +1,9 @@
-# Personal VPN and Website
+# Personal VPN and Website guide document.
 ### Student Name: Can Cui, Student ID: 35661409
 ### Server Domain: [ict35661409.click](https://ict35661409.click/), Globle IP:[13.58.36.157](http://13.58.36.157)
+## Project Overview
+I developed a cloud-based server on Amazon EC2 using an Ubuntu operating system, manually configured via SSH. The server integrates Shadowsocks as a proxy server to provide secure network access and Apache as a web server to host a personal website, creating a multifunctional platform. This project demonstrates my technical proficiency in Linux server management, network proxy configuration, and web server deployment. Through self-directed learning, I mastered the setup and optimization of Shadowsocks and Apache. Additionally, I implemented custom scripts to monitor traffic usage and proxy connection counts, enhancing the server's functionality and management.
+
 This document and project are based on Amazon EC2 Ubuntu server. 
 ## Launch a EC2 instance 
 * sign up/ login [EC2 Console](https://aws.amazon.com/ec2/)
@@ -107,6 +110,11 @@ Run the script
  After the process of building, it will show some information about your VPN, just like this. Take a screenshot or make a note.
  ![Pic](https://github.com/Eric-Tsui-cc/Personal-VPN-guideline/blob/main/image/Image%2027-05-2025%20at%2013.55.jpeg)
 
+<details>
+<summary>Click here to check the password for test </summary>
+Password : zxc147852
+</details> 
+
 ## Connect to your VPN
 Now we need software for connecting to your VPN server.
 For macOS and iOS, I recommend [Shadowrocket](https://apps.apple.com/us/app/shadowrocket/id932747118) (better user experience) and [OneClick](https://apps.apple.com/us/app/oneclick-safe-easy-fast/id1545555197)(Free).
@@ -116,7 +124,64 @@ For Windows systems, I recommend [Clash for windows](https://www.clashforwindows
  ![Pic](https://github.com/Eric-Tsui-cc/Personal-VPN-guideline/blob/main/image/Image%2027-05-2025%20at%2013.31.jpeg)
 ### After clicking save, you can connect to your VPN now.
  ![Pic](https://github.com/Eric-Tsui-cc/Personal-VPN-guideline/blob/main/image/Image%2027-05-2025%20at%2021.42.jpeg)
- ## Test IP, complete.
+### Test IP, complete.
+## Script for monitor traffic usage and proxy connection counts
+```
+#!/bin/bash
+# Set value for interface
+INTERFACE="enX0"
 
+# set value for your proxy service port
+PORT="13535"
+
+# check vnstat is installed
+if ! command -v vnstat &> /dev/null; then
+    echo "Error: vnstat is not installed. Please install it using 'sudo apt install vnstat'."
+    exit 1
+fi
+
+# check ss is working
+if ! command -v ss &> /dev/null; then
+    echo "Error: ss is not installed. Please install it using 'sudo apt install iproute2'."
+    exit 1
+fi
+
+# check interface is available
+if ! ip link show "$INTERFACE" &> /dev/null; then
+    echo "Error: Network interface $INTERFACE does not exist."
+    echo "Available interfaces:"
+    ip link | grep -E '^[0-9]+:' | awk '{print $2}' | sed 's/://'
+    exit 1
+fi
+
+# ensure vnstat is working
+if ! systemctl is-active --quiet vnstat; then
+    echo "Warning: vnstat service is not running. Attempting to start it..."
+    sudo systemctl start vnstat
+    if ! systemctl is-active --quiet vnstat; then
+        echo "Error: Failed to start vnstat service."
+        exit 1
+    fi
+fi
+echo "#################################################################################################################################"
+
+# print time
+echo "=== Traffic and Connection Report for $INTERFACE at $(date) ==="
+
+# print monthly data usage
+echo -e "\nMonthly Traffic ($INTERFACE):"
+vnstat -m -i "$INTERFACE" 2>/dev/null || {
+    echo "Error: Failed to retrieve monthly traffic. Ensure vnstat database is initialized for $INTERFACE."
+}
+
+# print connections for selected port（Deduplication）.
+echo -e "\nActive Connections on Proxy Server(VPN Connections) (Unique Remote IPs):"
+ss -tunap | grep ESTAB | grep ":$PORT" | awk -F'[ :]' '!seen[$9]++' | wc -l
+echo "Connection Details on Proxy Server(VPN Connections):"
+ss -tunap | grep ESTAB | grep ":$PORT" | awk -F'[ :]' '!seen[$9]++' | sort -k 5 || {
+    echo "No active connections found for port $PORT."
+}
+echo "#################################################################################################################################"
+···
 
 
