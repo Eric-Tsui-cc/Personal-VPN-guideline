@@ -17,7 +17,6 @@ This document and project are based on Amazon EC2 Ubuntu server.
 * Review and Launch
 * Click "Launch".
 [Tutorial for build EC2 if you don't know](https://www.youtube.com/watch?v=86Tuwtn3zp0)
-# Part 1:Build the Web server
 ## Modify your instance
 For better testing, adding the rule ICMP IPV4 to your security group is necessary. 
 Run your server, test the ping of your server (use the command for any bash, for example, cmd or powershell for Windows)
@@ -36,6 +35,7 @@ ssh -i "webkey" ubuntu@xx.xx.xxx.xx
 ```
 ### webkey is the local key file of your server.
 For Windows, download a software called [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) , for tutorial of using putty to connect your ec2 server, see [Video by Herbertech](https://www.youtube.com/live/TkSuLg-8TD8)
+# Part 1:Build the Web server
 ## Build basic web server
 * After connection, update and install Apache2: Run
 ```
