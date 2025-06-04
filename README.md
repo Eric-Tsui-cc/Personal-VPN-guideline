@@ -112,7 +112,7 @@ Run the script
 
 <details>
 <summary>Click here to check the password for test </summary>
-Password : zxc147852
+Password : Zxc147852
 </details> 
 
 ## Connect to your VPN
