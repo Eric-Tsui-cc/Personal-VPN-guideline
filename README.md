@@ -1,6 +1,7 @@
 # Personal VPN and Website guide document.
 ### Student Name: Can Cui, Student ID: 35661409
 ### Server Domain: [ict35661409.click](https://ict35661409.click/), Globle IP:[13.58.36.157](http://13.58.36.157)
+### Video explainer[https://www.youtube.com/live/z7YPIHmchj8](https://www.youtube.com/live/z7YPIHmchj8)
 ## Project Overview
 I developed a cloud-based server on Amazon EC2 using an Ubuntu operating system, manually configured via SSH. The server integrates Shadowsocks as a proxy server to provide secure network access and Apache as a web server to host a personal website, creating a multifunctional platform. This project demonstrates my technical proficiency in Linux server management, network proxy configuration, and web server deployment. Through self-directed learning, I mastered the setup and optimization of Shadowsocks and Apache. Additionally, I implemented custom scripts to monitor traffic usage and proxy connection counts, enhancing the server's functionality and management.
 
