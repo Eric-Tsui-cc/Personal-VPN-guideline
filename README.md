@@ -119,7 +119,7 @@ Password : Zxc147852
 ## Connect to your VPN
 Now we need software for connecting to your VPN server.
 For macOS and iOS, I recommend [Shadowrocket](https://apps.apple.com/us/app/shadowrocket/id932747118) (better user experience) and [OneClick](https://apps.apple.com/us/app/oneclick-safe-easy-fast/id1545555197)(Free).
-For Windows systems, I recommend [Clash for windows](https://www.clashforwindows.net/) or [SS for windows](https://github.com/shadowsocks/shadowsocks-windows) All free to use.
+For Windows systems, I recommend [ssR for Windows](https://github.com/ShadowsocksR-Live/ssrWin). It is free to use.
 ## Simple tutorial for connecting by using Shadowrocket.
  ![Pic](https://github.com/Eric-Tsui-cc/Personal-VPN-guideline/blob/main/image/Image%2027-05-2025%20at%2013.33.jpeg)
  ![Pic](https://github.com/Eric-Tsui-cc/Personal-VPN-guideline/blob/main/image/Image%2027-05-2025%20at%2013.31.jpeg)
